@@ -9,15 +9,15 @@ function setupSvg()
     .append("svg")
     .attr("width",svg_w)
     .attr("height",svg_h)
-    .attr("fill",black);
+    .attr("style","background:black");
 
   mysvg.selectAll("circle")
     .data(zoo)
-    .enter
+    .enter()
     .append("circle")
     .attr('cx',function(d){ return d.get('x'); })
     .attr('cy',function(d){ return d.get('y'); })
     .attr('r',circle_radius)
-    .attr('fill',white);
+    .attr('fill',"green");
 
 }

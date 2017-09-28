@@ -34,10 +34,17 @@ var Animal = function(x0,y0)
 {
   this.x = x0; 
   this.y = y0;
+  this.get = function(i) {
+    if(i==='x')      {return this.x;}
+    else if(i==='y') {return this.y;}
+  } 
+  this.set = function(i,val) {
+    if(i==='x')      {this.x = val;}
+    else if(i==='y') {this.y = val;}
+  }
+
   //this.r = new Arrow(x0,y0);
   //this.v = new Arrow(1,1);
-
-
 }
 
 
@@ -48,5 +55,3 @@ var Animal = function(x0,y0)
 
 
 
-
-}
