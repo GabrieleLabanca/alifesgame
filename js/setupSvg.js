@@ -1,9 +1,9 @@
 function setupSvg()
 {
   console.log("setupSvg");
-  //for(int i=0; i<N; ++i){
-    zoo.push(new Animal(50,50));//100*Math.random(),100*Math.random()));
-  //}
+  for( i=0; i<N; i++){
+    zoo.push(new Animal(svg_w*Math.random(),svg_h*Math.random()));
+  }
 
   mysvg = d3.select("#world")
     .append("svg")

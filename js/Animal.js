@@ -1,4 +1,34 @@
-var Arrow = function(x,y){
+var Animal = function(x0,y0)
+{
+  this.x = x0; 
+  this.y = y0;
+  this.get = function(i) {
+    if(i==='x')      {return this.x;}
+    else if(i==='y') {return this.y;}
+  } 
+  this.set = function(i,val) {
+    if(i==='x')      {this.x = val;}
+    else if(i==='y') {this.y = val;}
+  }
+  this.updatePosition = function() {
+    this.x += 0.5 - Math.random();
+    this.y += 0.5 - Math.random();
+    if(this.x>svg_w) this.x = svg_w;
+    if(this.y>svg_h) this.y = svg_h;
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+/*var Arrow = function(x,y){
   this.x = x;
   this.y = y;
   this.length = 2;
@@ -25,33 +55,5 @@ var Arrow = function(x,y){
 function sumArrows(A1,A2,k){ //returns Arrow with components=a+k*b
   var A3 = new Arrow(A1.x+k*A2.x, A1.y+k*A2.y);
   return A3;
-}
-
-
-
-
-var Animal = function(x0,y0)
-{
-  this.x = x0; 
-  this.y = y0;
-  this.get = function(i) {
-    if(i==='x')      {return this.x;}
-    else if(i==='y') {return this.y;}
-  } 
-  this.set = function(i,val) {
-    if(i==='x')      {this.x = val;}
-    else if(i==='y') {this.y = val;}
-  }
-
-  //this.r = new Arrow(x0,y0);
-  //this.v = new Arrow(1,1);
-}
-
-
-
-
-
-
-
-
+}*/
 
