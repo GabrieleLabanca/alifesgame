@@ -3,5 +3,5 @@ var svg_w = 500;
 
 var circle_radius = 10;
 var zoo = [];
-var N = 10;
+var N = 1;
 var mysvg;

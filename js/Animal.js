@@ -1,24 +1,28 @@
-var Animal = function(x0,y0)
-{
-  this.x = x0; 
-  this.y = y0;
-  this.get = function(i) {
+var Being = {
+  get: function(i){
     if(i==='x')      {return this.x;}
     else if(i==='y') {return this.y;}
-  } 
-  this.set = function(i,val) {
+  },
+  set: function(i,val){
     if(i==='x')      {this.x = val;}
     else if(i==='y') {this.y = val;}
+  },
+  banana: function(){
+    console.log('BANANA');
   }
-  this.updatePosition = function() {
-    this.x += 0.5 - Math.random();
-    this.y += 0.5 - Math.random();
-    if(this.x>svg_w) this.x = svg_w;
-    if(this.y>svg_h) this.y = svg_h;
-  }
-
-
 }
+
+
+var Animal = Object.create(Being, {
+  updatePosition: {
+    value: function(){
+      this.set('x', this.x + 0.5 - Math.random());
+      this.y += 0.5 - Math.random();
+      if(this.x>svg_w) this.x = svg_w;
+      if(this.y>svg_h) this.y = svg_h;
+    }
+  }
+});
 
 
 

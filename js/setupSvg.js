@@ -2,7 +2,10 @@ function setupSvg()
 {
   console.log("setupSvg");
   for( i=0; i<N; i++){
-    zoo.push(new Animal(svg_w*Math.random(),svg_h*Math.random()));
+    zoo.push( Object.create(Animal, {
+      x: { value: svg_w*Math.random() },
+      y: { value: svg_h*Math.random() }
+    }) );
   }
 
   mysvg = d3.select("#world")
