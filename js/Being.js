@@ -8,10 +8,11 @@ var Being = function(x,y){
   this.set = function(i,val){
     if(i==='x')      {this.x = val;}
     else if(i==='y') {this.y = val;}
-  },
+  }
   this.banana = function(){
     console.log('BANANA');
   }
+  this.color = 'black';
 }
 
 
@@ -23,16 +24,45 @@ var Animal = function(x,y){
       return B.get(i);
     },
     updatePosition: function(){
-      B.set('x', B.x + 0.5 - Math.random());
-      B.set('y', B.y + 0.5 - Math.random());
+      B.set('x', B.x + speed*( 0.5 - Math.random() ));
+      B.set('y', B.y + speed*( 0.5 - Math.random() ));
       if(B.x>svg_w) B.x = svg_w;
+      if(B.x<0)     B.x = 0;
       if(B.y>svg_h) B.y = svg_h;
-  
-    }
+      if(B.y<0)     B.y = 0;
+    },
+    color: ['black']
   };
   return obj;
-
 };
+
+var Plant = function(x,y){
+  var B = new Being(x,y);
+  
+  var obj = {
+    get: function(i){
+      return B.get(i);
+    },
+    updatePosition: function(){},
+    color: ['green']
+  };
+  return obj;
+};
+
+var Sheep = function(x,y){
+  var A = new Animal(x,y);
+
+  var obj = {
+    get: function(i){
+      return A.get(i);
+    },
+    updatePosition: function(){
+      return A.updatePosition();
+    },
+    color: ['white']
+  };
+  return obj;
+}
 
 
 
