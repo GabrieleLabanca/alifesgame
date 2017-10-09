@@ -1,3 +1,41 @@
+
+var Being = function(x,y){
+  this.x = x;
+  this.y = y;
+  this.get = function(i){
+    if(i==='x')      {return this.x;}
+    else if(i==='y') {return this.y;}
+  }
+  this.set = function(i,val){
+    if(i==='x')      {this.x = val;}
+    else if(i==='y') {this.y = val;}
+  },
+  this.banana = function(){
+    console.log('BANANA');
+  }
+}
+
+
+var Animal = function(x,y){
+  var B = new Being(x,y);
+  
+  var obj = {
+    updatePosition: function(){
+      B.set('x', B.x + 0.5 - Math.random());
+      B.y += 0.5 - Math.random();
+      if(B.x>svg_w) B.x = svg_w;
+      if(B.y>svg_h) B.y = svg_h;
+  
+    }
+  };
+  return obj;
+
+});
+
+
+
+
+/*
 var Being = {
   get: function(i){
     if(i==='x')      {return this.x;}
@@ -14,17 +52,18 @@ var Being = {
 
 
 var Animal = Object.create(Being, {
+  thisAnimal: { value: function(){return this;} },
   updatePosition: {
     value: function(){
-      this.set('x', this.x + 0.5 - Math.random());
-      this.y += 0.5 - Math.random();
-      if(this.x>svg_w) this.x = svg_w;
-      if(this.y>svg_h) this.y = svg_h;
+      this.prototype.set('x', this.prototype.x + 0.5 - Math.random());
+      this.Animal.y += 0.5 - Math.random();
+      if(this.Animal.x>svg_w) this.Animal.x = svg_w;
+      if(this.Animal.y>svg_h) this.Animal.y = svg_h;
     }
   }
 });
 
-
+*/
 
 
 
