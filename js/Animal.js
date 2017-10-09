@@ -1,4 +1,3 @@
-
 var Being = function(x,y){
   this.x = x;
   this.y = y;
@@ -20,9 +19,12 @@ var Animal = function(x,y){
   var B = new Being(x,y);
   
   var obj = {
+    get: function(i){
+      return B.get(i);
+    },
     updatePosition: function(){
       B.set('x', B.x + 0.5 - Math.random());
-      B.y += 0.5 - Math.random();
+      B.set('y', B.y + 0.5 - Math.random());
       if(B.x>svg_w) B.x = svg_w;
       if(B.y>svg_h) B.y = svg_h;
   
@@ -30,7 +32,7 @@ var Animal = function(x,y){
   };
   return obj;
 
-});
+};
 
 
 
