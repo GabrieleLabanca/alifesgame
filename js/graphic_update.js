@@ -1,4 +1,4 @@
-function move()
+function graphic_update()
 {
   mysvg.selectAll('circle')
     .data(zoo)

@@ -2,7 +2,7 @@ window.onload = function main()
 {
   logbug();
   setupSvg();
-  setInterval(action,1000/150);
+  setInterval(time_roll,100000/100);
 }
 
 function logbug()
@@ -10,8 +10,8 @@ function logbug()
   console.log("ehi");
 }
 
-function action()
+function time_roll()
 {
   update();
-  move();
+  graphic_update();
 }
