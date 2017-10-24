@@ -1,6 +1,6 @@
 var dist = function(a,b){
   var distance = Math.sqrt(
-      (a.x()-b.x()) * (a.x()-b.x())  +  (a.y()-b.y()) * (a.y()-b.y())
+      (a.x-b.x) * (a.x-b.x)  +  (a.y-b.y) * (a.y-b.y)
       );
   //console.log(distance);
   return distance;
@@ -31,15 +31,15 @@ var Animal = function(x,y){
   var B = new Being(x,y);
 
   var obj = {
-    x: function(){ return B.x; },
-    y: function(){ return B.y; },
+    x: B.x,
+    y: B.y,
     get: function(i){
       return B.get(i);
     },
     set: function(i,val){
-      return B.set(i,val);
+      B.set(i,val);
     },
-    updatePosition: function(){
+    randomWalk: function(){
       B.set('x', B.x + speed*( 0.5 - Math.random() ));
       B.set('y', B.y + speed*( 0.5 - Math.random() ));
       if(B.x>svg_w) B.x = svg_w;
@@ -47,6 +47,9 @@ var Animal = function(x,y){
       if(B.y>svg_h) B.y = svg_h;
       if(B.y<0)     B.y = 0;
     },
+      move: function(){
+	  randomWalk();
+      },
     color: ['black']
   };
   return obj;
@@ -56,15 +59,15 @@ var Plant = function(x,y){
   var B = new Being(x,y);
 
   var obj = {
-    x: function(){ return B.x; },
-    y: function(){ return B.y; },
+    x: B.x,
+    y: B.y,
     get: function(i){
       return B.get(i);
     },
     think: function(other){
-      if(Math.random()>0.8) this.color = 'green';  
+      //if(Math.random()>0.8) this.color = 'green';  
     },
-    updatePosition: function(){},
+    move: function(){},
     color: ['green'],
     act: function(){}
   };
@@ -75,43 +78,51 @@ var Sheep = function(x,y){
   var A = new Animal(x,y);
 
   var obj = {
-    x: function(){ return A.x(); },
-    y: function(){ return A.y(); },
+    x: A.x,
+    y: A.y,
     get: function(i){
       return A.get(i);
     },
     set: function(i,val){
-      return A.set(i,val);
+      A.set(i,val);
     },
     goal_distance: -1,
     goal_point: new Object,
     think: function(other){
       var d = dist(this,other);
-      console.log(d,this.goal_distance);
-      if(d < vis_radius && other. color == 'green'){
-        this.goal_distance = svg_h;
+      //console.log(d,this.goal_distance);
+	if(d < vis_radius && other.color == 'green'){
+	    if(this.goal_distance == -1){
+		this.goal_distance = svg_h;
+	    }
         if(d < this.goal_distance){
           this.goal_distance = d;
-          this.goal_point.x = other.x();
-          this.goal_point.y = other.y();
+            this.goal_point.x = other.x;
+            this.goal_point.y = other.y; 
         } 
-      }
+	}
+	//console.log('think \n'+this.x, this.y, this.goal_point.x, this.goal_point.y);
     },
-    updatePosition: function(){
-      if(this.goal_distance == -1){ return A.updatePosition(); }
-      else{
-        var dr = dist(goal_point,this);
-        var dx = (goal_point.x - this.x())/dr;
-        var dy = (goal_point.y - this.y())/dr;
-        this.set('x', this.x + speed*dx);
-        this.set('y', this.y + speed*dy);
-        if(this.x>svg_w) this.x = svg_w;
+    move: function(){
+	if(this.goal_distance == -1){
+	    A.randomWalk();
+	}
+	else{
+            var dr = this.goal_distance;
+	  
+        var dx = (this.goal_point.x - this.x)/dr;
+            var dy = (this.goal_point.y - this.y)/dr;
+	   // console.log(dx,dy);
+        A.set('x', A.x + dx);
+            A.set('y', A.y + dy);
+	    //A.x = this.x + dx;
+	    //A.y = this.y + dy;
+	    if(this.x>svg_w) this.x = svg_w;
         if(this.x<0)     this.x = 0;
         if(this.y>svg_h) this.y = svg_h;
         if(this.y<0)     this.y = 0;
 
         this.goal_distance = -1;
-        return;
       }
 
     },
