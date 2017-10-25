@@ -10,6 +10,7 @@ body {
   background-color: #7cde79;
 }
 
+/*simple brown line*/
 hr{
   height: 2px;
   display: block;
@@ -23,11 +24,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Lora', serif;
   font-weight: bold;
   color:  #4d2f0f ;
-}
-
-hr.hr1{
-    border: 1px solid palevioletred; 
-    margin-right: 50%
 }
 
 #custom-handle {
