@@ -1,0 +1,61 @@
+/*
+    GREEN: #5C755E;
+    BROWN: #A97D5D;
+    BEIGE: #F7DCB4;
+    GREY:  #9C9F84;
+DARKBROWN: #4D2F0F;
+
+*/
+
+:root {
+    --bg-color-1: #9C9F84;
+    --bg-color-2: #2e3a2f;   
+    --text-col-1: #F7DCB4;
+    --text-col-2: #fbf1e1;
+ }
+
+body{
+    background-color: var(--bg-color-1);
+    color: var(--text-col-1);
+}
+
+.jumbotron {
+    background-color: var(--bg-color-2);
+    border: 2px solid var(--bg-color-1);
+}
+
+.container{
+    border: 5px double var(--bg-color-1);
+    background-color: var(--bg-color-2);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-col-1);
+}
+
+a:link {
+    color: var(--text-col-2); 
+}
+
+/* visited link */
+a:visited {
+    color: var(--text-col-2);
+}
+
+/* mouse over link */
+a:hover {
+    color: var(--text-col-2);
+}
+
+/* selected link */
+a:active {
+    color: var(--text-col-2);
+}
+
+hr{
+  border-color: var(--bg-color-1);
+}
+
+div.bordered {
+    border:2px solid var(--bg-color-1);
+}
