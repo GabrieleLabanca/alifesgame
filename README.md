@@ -1,4 +1,6 @@
 # alifesgame
+(The site can be found at https://gabrielelabanca.github.io/alifesgame/)
+
 A Life's Game is an agent-based predator-prey model, written in Javascript. It is highly under developement. 
 
 The aim is to view a simulation of the Lotka-Volterra model using the Agent Based framework. We want to provide a simple graphic example of a closed world with two (or more) species interacting. Furthermore, since we want to build a self-explanatory frame, the target is mainly didactic.
