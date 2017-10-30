@@ -1,0 +1,11 @@
+$( function() {
+    var handle = $( "#time-slider" );
+    $( "#div" ).slider({
+        create: function() {
+            handle.text( $( this ).slider( "value" ) );
+        },
+        slide: function( event, ui ) {
+            handle.text( ui.value );
+        }
+    });
+} );
