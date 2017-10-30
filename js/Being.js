@@ -1,7 +1,9 @@
 var dist = function(a,b){
   var distance = Math.sqrt(
-    (a.x-b.x) * (a.x-b.x)  +  (a.y-b.y) * (a.y-b.y)
-  );
+      (a.get('x')-b.get('x')) * (a.get('x')-b.get('x'))  
+      +  
+      (a.get('y')-b.get('y')) * (a.get('y')-b.get('y'))
+      );
   //console.log(distance);
   return distance;
 }
@@ -10,6 +12,7 @@ var dist = function(a,b){
 
 
 var Being = function(x,y){
+  this.otype="Being";
   this.x = x;
   this.y = y;
   this.get = function(i){
@@ -31,8 +34,9 @@ var Animal = function(x,y){
   var B = new Being(x,y);
 
   var obj = {
-    x: B.x,
-    y: B.y,
+    otype: ['Animal'],
+    //x: B.x,
+    //y: B.y,
     get: function(i){
       return B.get(i);
     },
@@ -59,8 +63,9 @@ var Plant = function(x,y){
   var B = new Being(x,y);
 
   var obj = {
-    x: B.x,
-    y: B.y,
+    otype: ['Plant'],
+    //x: B.x,
+    //y: B.y,
     get: function(i){
       return B.get(i);
     },
@@ -78,8 +83,9 @@ var Sheep = function(x,y){
   var A = new Animal(x,y);
 
   var obj = {
-    x: A.x,
-    y: A.y,
+    otype: ['Sheep'],
+    //x: A.x,
+    //y: A.y,
     get: function(i){
       return A.get(i);
     },
@@ -87,7 +93,23 @@ var Sheep = function(x,y){
       A.set(i,val);
     },
     goal_distance: -1,
-    goal_point: new Object,
+    // define goal_point as an object -> get,set necessary for distance()
+    goal_point: new function(){
+      var obj_goal = {
+        otype: ['obj_goal'],
+        goal_x: 0,
+        goal_y: 0,
+        get: function(i){
+          if(i==='x')      {return this.goal_x;}
+          else if(i==='y') {return this.goal_y;}
+        },
+        set: function(i,val){
+          if(i==='x')      {this.goal_x = val;}
+          else if(i==='y') {this.goal_y = val;}
+        }
+      }
+      return obj_goal;
+    },
     think: function(other){
       var d = dist(this,other);
       //console.log(d,this.goal_distance);
@@ -97,8 +119,8 @@ var Sheep = function(x,y){
         }
         if(d < this.goal_distance){
           this.goal_distance = d;
-          this.goal_point.x = other.x;
-          this.goal_point.y = other.y;
+          this.goal_point.set('x',other.get('x'));
+          this.goal_point.set('y',other.get('y'));
         }
       }
       //console.log('think \n'+this.x, this.y, this.goal_point.x, this.goal_point.y);
@@ -110,17 +132,16 @@ var Sheep = function(x,y){
       else{
         var dr = this.goal_distance;
 
-        var dx = (this.goal_point.x - this.x)/dr;
-        var dy = (this.goal_point.y - this.y)/dr;
-        // console.log(dx,dy);
-        A.set('x', A.x + dx);
-        A.set('y', A.y + dy);
-        //A.x = this.x + dx;
-        //A.y = this.y + dy;
-        if(this.x>svg_w) this.x = svg_w;
-        if(this.x<0)     this.x = 0;
-        if(this.y>svg_h) this.y = svg_h;
-        if(this.y<0)     this.y = 0;
+        var dx = (this.goal_point.get('x') - this.get('x'))/dr;
+        var dy = (this.goal_point.get('y') - this.get('y'))/dr;
+        console.log(dx,dy);
+        A.set('x', A.get('x') + dx);
+        A.set('y', A.get('y') + dy);
+        console.log(A.get('x'),A.get('y'),A);
+        if(this.get('x')>svg_w) this.set('x',svg_w);
+        if(this.get('x')<0)     this.set('x',0);
+        if(this.get('y')>svg_h) this.set('y',svg_h);
+        if(this.get('y')<0)     this.set('y',0);
 
         this.goal_distance = -1;
       }
@@ -139,32 +160,32 @@ var Sheep = function(x,y){
 
 
 /*
-  var Being = {
-  get: function(i){
-  if(i==='x')      {return this.x;}
-  else if(i==='y') {return this.y;}
-  },
-  set: function(i,val){
-  if(i==='x')      {this.x = val;}
-  else if(i==='y') {this.y = val;}
-  },
-  banana: function(){
-  console.log('BANANA');
-  }
-  }
+   var Being = {
+   get: function(i){
+   if(i==='x')      {return this.x;}
+   else if(i==='y') {return this.y;}
+   },
+   set: function(i,val){
+   if(i==='x')      {this.x = val;}
+   else if(i==='y') {this.y = val;}
+   },
+   banana: function(){
+   console.log('BANANA');
+   }
+   }
 
 
-  var Animal = Object.create(Being, {
-  thisAnimal: { value: function(){return this;} },
-  updatePosition: {
-  value: function(){
-  this.prototype.set('x', this.prototype.x + 0.5 - Math.random());
-  this.Animal.y += 0.5 - Math.random();
-  if(this.Animal.x>svg_w) this.Animal.x = svg_w;
-  if(this.Animal.y>svg_h) this.Animal.y = svg_h;
-  }
-  }
-  });
+   var Animal = Object.create(Being, {
+   thisAnimal: { value: function(){return this;} },
+   updatePosition: {
+   value: function(){
+   this.prototype.set('x', this.prototype.x + 0.5 - Math.random());
+   this.Animal.y += 0.5 - Math.random();
+   if(this.Animal.x>svg_w) this.Animal.x = svg_w;
+   if(this.Animal.y>svg_h) this.Animal.y = svg_h;
+   }
+   }
+   });
 
 */
 
