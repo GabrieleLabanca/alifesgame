@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
+
     <!---jquery 3.2.1 and bootstrap--->
     <!---script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script--->
     <!---script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script--->
@@ -16,11 +17,11 @@
     <link rel="stylesheet" href="css/colours.css">
     <!---Bootswatch Lumen--->
     <!--link rel="stylesheet" href="css/bootstrap.min.css"-->
-    
+
     <!--D3 library-->
     <script type="text/javascript" src="d3/d3.min.js"></script>
 
-    <!--javascript program--> 
+    <!--javascript program-->
     <script type="text/javascript" src="js/Being.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/parameters.js"></script>
@@ -29,77 +30,74 @@
     <script type="text/javascript" src="js/update.js"></script>
 
     <!---JQuery 3.2.1 Google Ajax--->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!---JQuery UI--->
     <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">
     <script src="jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
     <!---Slider Script--->
     <script type="text/javascript" src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-      <script>
-	$( function() {
-	var handle = $( "#custom-handle" );
-	$( "#slider" ).slider({
-	create: function() {
-	handle.text( $( this ).slider( "value" ) );
-	},
-	slide: function( event, ui ) {
-	handle.text( ui.value );
-	}
-	});
-	} );
-      </script>
-    
+    <script>
+      $( function() {
+      var handle = $( "#custom-handle" );
+      $( "#slider" ).slider({
+      create: function() {
+      handle.text( $( this ).slider( "value" ) );
+      },
+      slide: function( event, ui ) {
+      handle.text( ui.value );
+      }
+      });
+      } );
+    </script>
 
     <title>aLifeGame</title>
   </head>
   <body>
     <div class="container">
-        <div class="jumbotron">
-          <h1>a Life's Game</h1>
-          <p><i>A Life's Game</i> is an agent-based predator-prey model, written in Javascript. It is <b>highly</b> under developement.
-          </p>
-        </div>
-	<div class="row">
+      <div class="jumbotron">
+        <h1>a Life's Game</h1>
+        <p><i>A Life's Game</i> is an agent-based predator-prey model, written in Javascript. It is <b>highly</b> under developement.
+        </p>
+      </div>
+      <div class="row">
         <div class="page-header col-sm-12">
           <h1>World</h1>
         </div>
         <div class="canvas-world col-sm-12">
           <hr>
-	  <div class="col-sm-12 bordered">
-	    <div class="row">
+          <div class="col-sm-12 bordered">
+            <div class="row">
               <div class="world" id="world"></div><!---JS--->
-	    </div>
-	  </div>
+            </div>
+          </div>
           <hr>
-	  <div class="col-sm-12" style="margin-bottom: 10px;">
-	    Handle
-	  </div>
-	  <div class="col-sm-11">
-	    <div id="slider">
-	      <div id="custom-handle" class="ui-slider-handle"></div>	  
-	    </div>
-	  </div>
-	  <hr>
+          <div class="col-sm-12" style="margin-bottom: 10px;">
+            Handle
+          </div>
+          <div class="col-sm-11">
+            <div id="slider">
+              <div id="custom-handle" class="ui-slider-handle"></div>
+            </div>
+          </div>
+          <hr>
         </div>
         <div class="col-sm-12">
           <p>The aim is to view a simulation of the <a href="https://en.wikipedia.org/wiki/Lotka%E2%80%93Volterra_equations"><i>Lotka-Volterra</i></a> model using the <a href="https://en.wikipedia.org/wiki/Agent-based_model"><i>Agent Based</i></a> framework. We want to provide a simple graphic example of a closed world with two (or more) species interacting. Furthermore, since we want to build a self-explanatory frame, the target is mainly didactic.</p>
-	  <p>If you want to contribute our aims are:</p>
-	  <ul>
-	    <li><b>OPTIMIZATION</b> of the performance and the speed of simulation,</li>
-	    <li><b>GENERALIZATION</b> of the model,</li>
-	    <li><b>IMPROVEMENT</b> of the user interface: we want it to be simple.</li>
-	  </ul>
-	  <p>We wrote a JS hierarchy to simulate the model (it's not the simplest thing to read but we gave it a try since we are mainly c++ programmers): for this reason the code is buggy right now.</p>
-	  <p>The full code can be found <a href="https://github.com/GabrieleLabanca/alifesgame">on Github</a> and has been developed by <a href="https://inknos.github.io/">Nicola Sella</a> and <a href="https://gabrielelabanca.github.io/">Gabriele Labanca</a> as a portfolio project, approached mostly because of a childish excitement in seeing little things moving.</p>
-	  <p>The project is fully written in HTML, CSS and Javascript with the help of <a href="https://d3js.org/">d3js</a>, <a href="http://jquery.com/">JQuery</a>, <a href="http://jqueryui.com/">JQueryUI</a> and <a href="http://getbootstrap.com/">Bootstrap</a>.</p>
-	  <p>last update - 25/10/2017</p>
+          <p>If you want to contribute our aims are:</p>
+          <ul>
+            <li><b>OPTIMIZATION</b> of the performance and the speed of simulation,</li>
+            <li><b>GENERALIZATION</b> of the model,</li>
+            <li><b>IMPROVEMENT</b> of the user interface: we want it to be simple.</li>
+          </ul>
+          <p>We wrote a JS hierarchy to simulate the model (it's not the simplest thing to read but we gave it a try since we are mainly c++ programmers): for this reason the code is buggy right now.</p>
+          <p>The full code can be found <a href="https://github.com/GabrieleLabanca/alifesgame">on Github</a> and has been developed by <a href="https://inknos.github.io/">Nicola Sella</a> and <a href="https://gabrielelabanca.github.io/">Gabriele Labanca</a> as a portfolio project, approached mostly because of a childish excitement in seeing little things moving.</p>
+          <p>The project is written in HTML, CSS and JavaScript with the help of <a href="https://d3js.org/">d3js</a>, <a href="http://jquery.com/">JQuery</a>, <a href="http://jqueryui.com/">JQueryUI</a> and <a href="http://getbootstrap.com/">Bootstrap</a>.</p>
+          <p>last update - 25/10/2017</p>
         </div>
-	
-	
         <div class="col-sm-12 col-md-4">
-	  Special thanks to :<a href="http://www.turnintocoders.it/it/" target="_blank">turnintocoders</a>
-	</div>
+          Special thanks to :<a href="http://www.turnintocoders.it/it/" target="_blank">turnintocoders</a>
+        </div>
         <div class="col-sm-12 col-md-4">
           References <mark>TODO</mark>
         </div>
@@ -107,7 +105,7 @@
           Copy <mark>TODO</mark>&copy;
         </div>
       </div>
-      
+
     </div>
 </div>
 </div><!---container--->
