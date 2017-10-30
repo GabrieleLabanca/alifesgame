@@ -15,7 +15,7 @@ var N = 0;
 var N_plants = 50;
 var N_sheep = 10;
 var mysvg;
-var vis_radius = 20;
+var vis_radius = 30;
 var speed = 50;
 var sheep_speed = 10;
 var time_speed = 100000;
