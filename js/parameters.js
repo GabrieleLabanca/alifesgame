@@ -9,3 +9,4 @@ var N_sheep = 10;
 var mysvg;
 var vis_radius = 500;
 var speed = 50;
+var sheep_speed = 10;

@@ -87,14 +87,13 @@ var Sheep = function(x,y){
 
   var obj = {
     otype: ['Sheep'],
-    //x: A.x,
-    //y: A.y,
     get: function(i){
       return A.get(i);
     },
     set: function(i,val){
       A.set(i,val);
     },
+    handicap_s: 0,
     goal_distance: -1,
     // define goal_point as an object -> get,set necessary for distance()
     create_goal_point: function(){
@@ -130,12 +129,13 @@ var Sheep = function(x,y){
       //console.log('think \n'+this.x, this.y, this.goal_point.x, this.goal_point.y);
     },
     move: function(){
+      this.set('s',sheep_speed+this.handicap_s);
       if(this.goal_distance == -1){
         A.randomWalk();
       }
       else{
         var dr = this.goal_distance;
-        if(speed > dr){
+        if(this.get('s') > dr){
           A.set('x',this.goal_point.get('x')+circle_radius);
           A.set('y',this.goal_point.get('y')+circle_radius);
           console.log(this.goal_point);
@@ -166,67 +166,3 @@ var Sheep = function(x,y){
 
 
 
-/*
-   var Being = {
-   get: function(i){
-   if(i==='x')      {return this.x;}
-   else if(i==='y') {return this.y;}
-   },
-   set: function(i,val){
-   if(i==='x')      {this.x = val;}
-   else if(i==='y') {this.y = val;}
-   },
-   banana: function(){
-   console.log('BANANA');
-   }
-   }
-
-
-   var Animal = Object.create(Being, {
-   thisAnimal: { value: function(){return this;} },
-   updatePosition: {
-   value: function(){
-   this.prototype.set('x', this.prototype.x + 0.5 - Math.random());
-   this.Animal.y += 0.5 - Math.random();
-   if(this.Animal.x>svg_w) this.Animal.x = svg_w;
-   if(this.Animal.y>svg_h) this.Animal.y = svg_h;
-   }
-   }
-   });
-
-*/
-
-
-
-
-
-
-
-/*var Arrow = function(x,y){
-  this.x = x;
-  this.y = y;
-  this.length = 2;
-  this.get = function(i) {
-  if(i==='x')      {return this.x;}
-  else if(i==='y') {return this.y;}
-  }
-  this.set = function(i,val) {
-  if(i==='x')      {this.x = val;}
-  else if(i==='y') {this.y = val;}
-  }
-  this.sum = function(otherArrow,k){
-  this.x += k*otherArrow.x;
-  this.y += k*otherArrow.y;
-  }
-  this.rho = function(){
-  return Math.sqrt(this.x*this.x+this.y*this.y);
-  }
-  this.theta = function(){
-  return Math.tan(this.y/this.x);
-  }
-  }
-
-  function sumArrows(A1,A2,k){ //returns Arrow with components=a+k*b
-  var A3 = new Arrow(A1.x+k*A2.x, A1.y+k*A2.y);
-  return A3;
-  }*/
