@@ -61,7 +61,7 @@ var Animal = function(x,y){
   };
   return obj;
 };
-
+https://duckduckgo.com/
 var Plant = function(x,y){
   var B = new Being(x,y);
 
@@ -73,10 +73,16 @@ var Plant = function(x,y){
       return B.get(i);
     },
     think: function(other){
-      //if(Math.random()>0.8) this.color = 'green';
+      if(Math.random()>0.9) {
+        //is.color = 'green';
+      }
     },
-    move: function(){},
-    color: ['green'],
+    move: function(){
+      if(Math.random()>0.95) {
+        this.color = green;
+      }
+    },
+    color: [Math.random()>0.6 ? green : brown],
     act: function(){}
   };
   return obj;
@@ -115,7 +121,7 @@ var Sheep = function(x,y){
     goal_point: undefined,
     think: function(other){
       var d = dist(this,other);
-      if(d < vis_radius && other.color == 'green'){
+      if(d < vis_radius && other.color == green){
         if(this.goal_distance == -1){
           this.goal_distance = svg_h;
         }
@@ -138,7 +144,7 @@ var Sheep = function(x,y){
         if(this.get('s') > dr){
           A.set('x',this.goal_point.get('x')+circle_radius);
           A.set('y',this.goal_point.get('y')+circle_radius);
-          console.log(this.goal_point);
+          //console.log(this.goal_point);
         } else {
         var dx = this.get('s')*(this.goal_point.get('x') - this.get('x'))/dr;
         var dy = this.get('s')*(this.goal_point.get('y') - this.get('y'))/dr;
@@ -157,7 +163,7 @@ var Sheep = function(x,y){
     act: function(other){
       //if(dist(A,other) < 2*circle_radius)
       //console.log("touch!");
-      if(other.color == 'green') {other.color = '#4f3222'; }
+      if(other.color == green) {other.color = brown; }
     },
     color: ['white']
   };

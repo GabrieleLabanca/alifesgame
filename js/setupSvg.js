@@ -16,7 +16,7 @@ function setupSvg()
     .append("svg")
     .attr("width",svg_w)
     .attr("height",svg_h)
-    .attr("style","background:chocolate");
+    .attr("style","background:"+bg_color_2+';');
 
   mysvg.selectAll("circle")
     .data(zoo)

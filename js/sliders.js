@@ -4,7 +4,7 @@ $( function() {
         min: 8000,
         max: 200000,
 	step: 1000,
-        value: 100000,
+        value: time_speed,
         create: function() {
             handle.text( $( this ).slider( "value" ) );
         },
@@ -23,7 +23,7 @@ $( function() {
         min: 0,
         max: 50,
 	step: 10,
-        value: 10,
+        value: sheep_speed,
         create: function() {
             handle.text( $( this ).slider( "value" ) );
         },

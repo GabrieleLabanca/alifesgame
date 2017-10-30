@@ -2,7 +2,7 @@ window.onload = function main()
 {
   logbug();
   setupSvg();
-  timer = setInterval(time_roll,100000/100);
+  timer = setInterval(time_roll,time_speed/100);
 }
 
 function logbug()
