@@ -22,7 +22,7 @@ h1, h2, h3, h4, h5, h6 {
   color:  #4d2f0f ;
 }
 
-#time-slider {
+#time-slider, #sheep-speed-slider {
     width: 3em;
     height: 1.6em;
     top: 50%;
