@@ -15,13 +15,16 @@ var Being = function(x,y){
   this.otype="Being";
   this.x = x;
   this.y = y;
+  this.speed = speed;
   this.get = function(i){
     if(i==='x')      {return this.x;}
     else if(i==='y') {return this.y;}
+    else if(i==='s') {return this.speed;}
   }
   this.set = function(i,val){
     if(i==='x')      {this.x = val;}
     else if(i==='y') {this.y = val;}
+    else if(i==='s') {this.speed = val;}
   }
   //this.think = function(){}
   //this.move  = function(){}
@@ -132,8 +135,8 @@ var Sheep = function(x,y){
       else{
         var dr = this.goal_distance;
 
-        var dx = (this.goal_point.get('x') - this.get('x'))/dr;
-        var dy = (this.goal_point.get('y') - this.get('y'))/dr;
+        var dx = this.get('s')*(this.goal_point.get('x') - this.get('x'))/dr;
+        var dy = this.get('s')*(this.goal_point.get('y') - this.get('y'))/dr;
         console.log(dx,dy);
         A.set('x', A.get('x') + dx);
         A.set('y', A.get('y') + dy);
