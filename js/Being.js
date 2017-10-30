@@ -97,7 +97,7 @@ var Sheep = function(x,y){
     },
     goal_distance: -1,
     // define goal_point as an object -> get,set necessary for distance()
-    goal_point: new function(){
+    create_goal_point: function(){
       var obj_goal = {
         otype: ['obj_goal'],
         goal_x: 0,
@@ -113,15 +113,16 @@ var Sheep = function(x,y){
       }
       return obj_goal;
     },
+    goal_point: undefined,
     think: function(other){
       var d = dist(this,other);
-      //console.log(d,this.goal_distance);
       if(d < vis_radius && other.color == 'green'){
         if(this.goal_distance == -1){
           this.goal_distance = svg_h;
         }
         if(d < this.goal_distance){
           this.goal_distance = d;
+          this.goal_point = this.create_goal_point();
           this.goal_point.set('x',other.get('x'));
           this.goal_point.set('y',other.get('y'));
         }
@@ -134,13 +135,16 @@ var Sheep = function(x,y){
       }
       else{
         var dr = this.goal_distance;
-
+        if(speed > dr){
+          A.set('x',this.goal_point.get('x')+circle_radius);
+          A.set('y',this.goal_point.get('y')+circle_radius);
+          console.log(this.goal_point);
+        } else {
         var dx = this.get('s')*(this.goal_point.get('x') - this.get('x'))/dr;
         var dy = this.get('s')*(this.goal_point.get('y') - this.get('y'))/dr;
-        console.log(dx,dy);
         A.set('x', A.get('x') + dx);
         A.set('y', A.get('y') + dy);
-        console.log(A.get('x'),A.get('y'),A);
+        }
         if(this.get('x')>svg_w) this.set('x',svg_w);
         if(this.get('x')<0)     this.set('x',0);
         if(this.get('y')>svg_h) this.set('y',svg_h);
