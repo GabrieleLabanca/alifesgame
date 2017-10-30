@@ -9,7 +9,8 @@ $( function() {
         },
         slide: function( event, ui ) {
             handle.text( ui.value ),
-	    setInterval(time_roll, ui.value/100)
+            clearInterval(timer),
+            timer = setInterval(time_roll, ui.value/100)
         }
     });
 } );
