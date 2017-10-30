@@ -1,5 +1,7 @@
 function setupSvg()
 {
+  svg_w = document.getElementById('world-frame').clientWidth;
+  //svg_h = document.getElementById('world-frame').clientHeight;
   console.log("setupSvg");
   for( i=0; i<N; i++){
     zoo.push( new Animal(svg_w*Math.random(),svg_h*Math.random()));
