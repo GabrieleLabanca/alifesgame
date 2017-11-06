@@ -13,7 +13,7 @@ var circle_radius = 10;
 var zoo = [];
 var N = 0;
 var N_plants = 50;
-var N_sheep = 10;
+var N_sheep = 1;
 var mysvg;
 var vis_radius = 30;
 var speed = 50;
