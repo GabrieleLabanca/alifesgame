@@ -4,6 +4,7 @@ var Being = function(x,y){
   this.x = x;
   this.y = y;
   this.speed = speed;
+  this.energy =  Math.floor((Math.random() * 10) + 1); // random energy betwen 1 and 10
   this.get = function(i){
     if(i==='x')      {return this.x;}
     else if(i==='y') {return this.y;}

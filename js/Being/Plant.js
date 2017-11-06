@@ -18,6 +18,7 @@ var Plant = function(x,y){
         this.color = green;
       }
     },
+    energy: B.energy,
     color: [Math.random()>0.6 ? green : brown],
     act: function(){}
   };
