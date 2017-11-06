@@ -19,7 +19,7 @@ var Wolf = function(x,y){
     goal_point: undefined,
     think: function(other){
       var d = dist(this,other);
-      if(d < vis_radius){ // checks if 'other' is in range
+      if(d < wolf_vis_range){ // checks if 'other' is in range
         if(other.otype == 'Sheep' && other.color == 'white' ){ // case 'Sheep'
           if(this.goal_distance == -1){
             this.goal_distance = svg_h;
@@ -34,7 +34,7 @@ var Wolf = function(x,y){
       }
     },
     move: function(){ //TODO implement it in Animal, but DIFFICULT
-      this.set('s',speed+this.handicap_s); //TODO wolf_speed
+      this.set('s',wolf_speed+this.handicap_s); 
       if(this.goal_distance == -1){
         A.randomWalk();
       }

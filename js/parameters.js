@@ -1,6 +1,6 @@
 /********************************/
 /*  parameters.js               */
-/*  golbal constants and        */
+/*  global constants and        */
 /*  slider values               */
 /********************************/
 
@@ -16,9 +16,13 @@ var N_plants = 50;
 var N_sheep = 20;
 var N_wolves = 5;
 var mysvg;
+
+var sheep_vis_range  = 30;
+var wolf_vis_range = 100;
 var vis_radius = 50;
 var speed = 50;
 var sheep_speed = 10;
+var wolf_speed  = 15;
 var time_speed = 100000;
 
 // colours
@@ -29,5 +33,8 @@ var text_col_1 = '#f7dcb4';
 var text_col_2 = '#fbf1e1';
 var green = 'green';
 var brown = '#4f3222';
+var white = 'white';
+var red = 'red';
+var black = 'black';
 
 //eof

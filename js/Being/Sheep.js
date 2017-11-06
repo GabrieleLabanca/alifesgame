@@ -18,7 +18,7 @@ var Sheep = function(x,y){
     goal_point: undefined,
     think: function(other){
       var d = dist(this,other);
-      if(d < vis_radius && other.color == green){
+      if(d < sheep_vis_range && other.color == green){
         if(this.goal_distance == -1){
           this.goal_distance = svg_h;
         }
@@ -61,7 +61,7 @@ var Sheep = function(x,y){
       //console.log("touch!");
       if(other.color == green) {other.color = brown; }
     },
-    color: ['white']
+    color: white
   };
   return obj;
 }
