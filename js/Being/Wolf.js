@@ -20,7 +20,7 @@ var Wolf = function(x,y){
     think: function(other){
       var d = dist(this,other);
       if(d < vis_radius){ // checks if 'other' is in range
-        if(other.otype == 'Sheep'){ // case 'Sheep'
+        if(other.otype == 'Sheep' && other.color == 'white' ){ // case 'Sheep'
           if(this.goal_distance == -1){
             this.goal_distance = svg_h;
           }

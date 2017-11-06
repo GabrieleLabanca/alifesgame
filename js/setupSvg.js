@@ -12,6 +12,10 @@ function setupSvg()
   for( i=0; i<N_sheep; i++){
     zoo.push( new Sheep(svg_w*Math.random(),svg_h*Math.random()));
   }
+  for( i=0; i<N_wolves; i++){
+    zoo.push( new Wolf(svg_w*Math.random(),svg_h*Math.random()));
+  }
+
 
 
   mysvg = d3.select("#world")
