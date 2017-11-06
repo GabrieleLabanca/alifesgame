@@ -13,20 +13,7 @@ var Sheep = function(x,y){
     goal_distance: -1,
     // define goal_point as an object -> get,set necessary for distance()
     create_goal_point: function(){
-      var obj_goal = {
-        otype: ['obj_goal'],
-        goal_x: 0,
-        goal_y: 0,
-        get: function(i){
-          if(i==='x')      {return this.goal_x;}
-          else if(i==='y') {return this.goal_y;}
-        },
-        set: function(i,val){
-          if(i==='x')      {this.goal_x = val;}
-          else if(i==='y') {this.goal_y = val;}
-        }
-      }
-      return obj_goal;
+      return A.create_goal_point();
     },
     goal_point: undefined,
     think: function(other){
@@ -42,7 +29,6 @@ var Sheep = function(x,y){
           this.goal_point.set('y',other.get('y'));
         }
       }
-      //console.log('think \n'+this.x, this.y, this.goal_point.x, this.goal_point.y);
     },
     move: function(){
       this.set('s',sheep_speed+this.handicap_s);

@@ -14,6 +14,7 @@ var Plant = function(x,y){
       }
     },
     move: function(){
+      // must be here and not in think! Indeed, think is repeated N/2 times
       if(Math.random()>0.95) {
         this.color = green;
       }

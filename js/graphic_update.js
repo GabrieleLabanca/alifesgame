@@ -7,9 +7,4 @@ function graphic_update()
     .attr('cy',function(d){ return d.get('y'); })
     .attr('r',circle_radius)
     .attr('fill',function(d){ return d.color; } );
-
-
-
-
-
 }

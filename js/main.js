@@ -7,7 +7,7 @@ window.onload = function main()
 
 function logbug()
 {
-  console.log("ehi");
+  console.log("aLifes'Game, by Nicola Sella and Gabriele Labanca");
 }
 
 function time_roll()
