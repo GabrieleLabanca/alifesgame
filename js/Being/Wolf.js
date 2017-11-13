@@ -10,6 +10,7 @@ var Wolf = function(x,y){
     set: function(i,val){
       A.set(i,val);
     },
+    energy: A.energy,
     handicap_s: 0,
     goal_distance: -1,
     // define goal_point as an object -> get,set necessary for distance()
@@ -34,7 +35,8 @@ var Wolf = function(x,y){
       }
     },
     move: function(){ //TODO implement it in Animal, but DIFFICULT
-      this.set('s',wolf_speed+this.handicap_s); 
+      this.set('s',wolf_speed+this.handicap_s);
+      this.energy = this.energy - 1;
       if(this.goal_distance == -1){
         A.randomWalk();
       }

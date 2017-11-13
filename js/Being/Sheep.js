@@ -9,6 +9,7 @@ var Sheep = function(x,y){
     set: function(i,val){
       A.set(i,val);
     },
+    energy: A.energy,
     handicap_s: 0,
     goal_distance: -1,
     // define goal_point as an object -> get,set necessary for distance()
@@ -32,6 +33,7 @@ var Sheep = function(x,y){
     },
     move: function(){
       this.set('s',sheep_speed+this.handicap_s);
+      this.energy = this.energy - 1;
       if(this.goal_distance == -1){
         A.randomWalk();
       }
