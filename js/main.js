@@ -13,5 +13,6 @@ function logbug()
 function time_roll()
 {
   update();
+  //remove_dead();
   graphic_update();
 }

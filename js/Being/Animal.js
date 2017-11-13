@@ -38,7 +38,7 @@ var Animal = function(x,y){
       randomWalk();
     },
     energy: B.energy,
-    color: ['black']
+    color: ['pink']
   };
   return obj;
 };

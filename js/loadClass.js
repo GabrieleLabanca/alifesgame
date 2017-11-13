@@ -30,6 +30,10 @@ var imported3_5 = document.createElement('script');
 imported3_5.src = 'js/Being/Wolf.js';
 document.head.appendChild(imported3_5);
 
+var imported3_6 = document.createElement('script');
+imported3_6.src = 'js/remove_dead.js';
+document.head.appendChild(imported3_6);
+
 var imported4 = document.createElement('script');
 imported4.src = 'js/graphic_update.js';
 document.head.appendChild(imported4);

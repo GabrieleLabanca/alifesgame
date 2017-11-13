@@ -12,9 +12,9 @@ var svg_w = 576;
 var circle_radius = 10;
 var zoo = [];
 var N = 0;
-var N_plants = 50;
-var N_sheep = 20;
-var N_wolves = 5;
+var N_plants =1;
+var N_sheep = 10;
+var N_wolves = 1;
 var mysvg;
 
 var sheep_vis_range  = 30;

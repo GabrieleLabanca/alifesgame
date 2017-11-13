@@ -15,8 +15,15 @@ function update()
       A.set('x',t+1);
       t = A.get('y');
       A.set('y',t+1);*/
-
-    zoo[a].move();
+    if(zoo[a].energy > 0){
+      zoo[a].move();
+      //console.log(a,zoo[a].energy);
+    } else {
+      remove_dead();
+      console.log("Remove ",zoo[a]);
+      zoo.splice(a,1);
+    }
+    console.log("zoo size is", zoo.length);
   }
 
   // act double loop with dplicate exclusion
