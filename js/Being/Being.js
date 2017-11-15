@@ -3,12 +3,14 @@ var Being = function(x,y){
   this.otype="Being";
   this.x = x;
   this.y = y;
+  this.id = id_c++;
   this.speed = speed;
   this.energy =  Math.floor((Math.random() * 10) + 1); // random energy betwen 1 and 10
   this.get = function(i){
-    if(i==='x')      {return this.x;}
-    else if(i==='y') {return this.y;}
-    else if(i==='s') {return this.speed;}
+    if(i==='x')       {return this.x;}
+    else if(i==='y')  {return this.y;}
+    else if(i==='s')  {return this.speed;}
+    else if(i==='id') {return this.id;}
   }
   this.set = function(i,val){
     if(i==='x')      {this.x = val;}

@@ -9,6 +9,7 @@ var svg_h = 576;
 var svg_w = 576;
 
 // being parameters
+var id_c = 0; // livings' id: counts how many living objects are created 
 var circle_radius = 10;
 var zoo = [];
 var N = 0;
