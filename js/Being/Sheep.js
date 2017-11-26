@@ -9,7 +9,7 @@ var Sheep = function(x,y){
     set: function(i,val){
       A.set(i,val);
     },
-    energy: A.energy,
+    //energy: A.energy,
     handicap_s: 0,
     goal_distance: -1,
     // define goal_point as an object -> get,set necessary for distance()
@@ -33,7 +33,7 @@ var Sheep = function(x,y){
     },
     move: function(){
       this.set('s',sheep_speed+this.handicap_s);
-      this.energy = this.energy - 1;
+      this.set('energy',this.get('energy') - 1);
       if(this.goal_distance == -1){
         A.randomWalk();
       }
@@ -61,7 +61,10 @@ var Sheep = function(x,y){
     act: function(other){
       //if(dist(A,other) < 2*circle_radius)
       //console.log("touch!");
-      if(other.color == green) {other.color = brown; }
+      if(other.otype == 'Plant' && other.color == green) {
+        other.color = brown; 
+        this.set('energy',this.get('energy')+2);
+      }
     },
     color: white
   };

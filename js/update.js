@@ -15,7 +15,7 @@ function update()
       A.set('x',t+1);
       t = A.get('y');
       A.set('y',t+1);*/
-    if(zoo[a].energy > 0){
+    if(zoo[a].get('energy') > 0){
       zoo[a].move();
       //console.log(a,zoo[a].energy);
     } else {
