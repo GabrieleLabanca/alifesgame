@@ -62,7 +62,10 @@ var Wolf = function(x,y){
 
     },
     act: function(other){
-      if(other.otype == 'Sheep') {other.color = 'red'; }
+      if(other.otype == 'Sheep') {
+        other.color = 'red'; 
+        other.energy = 0;
+      }
     },
     color: ['black']
   };

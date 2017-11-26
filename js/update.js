@@ -1,14 +1,14 @@
 function update()
 {
-  // think double loop 
+  // think: double loop
   for(a = 0; a<zoo.length; a++){
       for(b = 0; b<zoo.length; b++){
 	  if(a == b)continue;
-      zoo[a].think(zoo[b]); 
+      zoo[a].think(zoo[b]);
     }
   }
 
-  // move single loop
+  // move: single loop
   for(a = 0; a<zoo.length; a++){
     /*var A = zoo[a];
       var t = A.get('x');
@@ -20,13 +20,18 @@ function update()
       //console.log(a,zoo[a].energy);
     } else {
       remove_dead();
-      console.log("Remove ",zoo[a]);
+      //console.log("Remove ",zoo[a]);
       zoo.splice(a,1);
     }
-    console.log("zoo size is", zoo.length);
+    /*var zoo_composition = "zoo composition: ";
+    for(a = 0; a<zoo.length; a++){
+      zoo_composition = zoo_composition + " " + zoo[a].get('id');
+    }
+    console.log(zoo_composition);
+    */
   }
 
-  // act double loop with dplicate exclusion
+  // act: double loop with duplicate exclusion
   for(a = 0; a<zoo.length; a++){
     for(b = 0; b<a; b++){
       if(dist(zoo[a],zoo[b]) < 2*circle_radius){

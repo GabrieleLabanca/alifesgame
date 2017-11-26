@@ -9,13 +9,13 @@ var svg_h = 576;
 var svg_w = 576;
 
 // being parameters
-var id_c = 0; // livings' id: counts how many living objects are created 
+var id_c = 0; // livings' id: counts how many living objects are created
 var circle_radius = 10;
 var zoo = [];
 var N = 0;
-var N_plants =1;
-var N_sheep = 10;
-var N_wolves = 1;
+var N_plants = 100;
+var N_sheep = 100;
+var N_wolves = 10;
 var mysvg;
 
 var sheep_vis_range  = 30;
