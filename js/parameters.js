@@ -26,6 +26,9 @@ var sheep_speed = 10;
 var wolf_speed  = 15;
 var time_speed = 100000;
 
+var ltsa = [0]; // list to shuffle a
+var ltsb = [0]; // list to shuffle b
+
 // colours
 // refer to css/colours.css
 var bg_color_1 = '#9c9f84';
