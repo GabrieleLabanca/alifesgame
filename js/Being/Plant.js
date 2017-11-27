@@ -8,6 +8,9 @@ var Plant = function(x,y){
     get: function(i){
       return B.get(i);
     },
+    set: function(i,val){
+      //B.set(i,val);
+    },
     think: function(other){
       if(Math.random()>0.9) {
         //is.color = 'green';

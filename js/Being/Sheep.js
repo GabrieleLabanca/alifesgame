@@ -22,7 +22,7 @@ var Sheep = function(x,y){
       if(d < sheep_vis_range && (
             (this.get('energy') < 6 && other.color == green) // hungry
             || (this.get('energy') >5 // ready for reproduction
-              && other.otype == 'sheep' && other.color == 'white') // oth is sheep
+              && other.otype == 'Sheep' && other.color == 'white') // oth is sheep
             )){
           if(this.goal_distance == -1){
             this.goal_distance = svg_h;
@@ -33,6 +33,8 @@ var Sheep = function(x,y){
             this.goal_point.set('x',other.get('x'));
             this.goal_point.set('y',other.get('y'));
           }
+          if(other.otype==='Plant'){ this.set('status','eating'); }
+          else if(other.otype==='Sheep'){ this.set('status','mating'); }
         }
     },
     move: function(){
@@ -63,16 +65,17 @@ var Sheep = function(x,y){
     },
     act: function(other){
       if(other.otype == 'Sheep' && other.color == white // is other a sheep?
-          && other.get('status')=='ready' 
-          && this.get('status')=='ready'){ // are this and other ready to act?
-        this.set('status','pregnant');
+          && other.get('status')=='ready'
+          && this.get('status')=='mating'){ // are this and other ready to act?
         other.set('status','pregnant');
+        this.set('status', 'pregnant');
         zoo.push( new Sheep(this.get('x'),this.get('y'),id_c++) );
+        console.log('new sheep born!');
       }
       else if(other.otype == 'Plant' && other.color == green // is other a plant?
             && this.get('status')=='ready') { // is this ready to act?
           this.set('status','eating');
-          other.color = brown; 
+          other.color = brown;
           this.set('energy',this.get('energy')+2);
         }
     },
@@ -80,4 +83,3 @@ var Sheep = function(x,y){
   };
   return obj;
 }
-

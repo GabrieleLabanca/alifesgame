@@ -13,13 +13,13 @@ var id_c = 0; // livings' id: counts how many living objects are created
 var circle_radius = 10;
 var zoo = [];
 var N = 0;
-var N_plants = 100;
+var N_plants = 150;
 var N_sheep = 100;
-var N_wolves = 10;
+var N_wolves = 50;
 var mysvg;
 
-var sheep_vis_range  = 30;
-var wolf_vis_range = 100;
+var sheep_vis_range  = 200;
+var wolf_vis_range = 200;
 var vis_radius = 50;
 var speed = 50;
 var sheep_speed = 10;
