@@ -9,7 +9,7 @@ function setupSvg()
     zoo.push( new Plant(svg_w*Math.random(),svg_h*Math.random(),id_c++));
   }
   for( i=0; i<N_sheep; i++){
-    zoo.push( new Sheep(svg_w*Math.random(),svg_h*Math.random(),id_c));
+    zoo.push( new Sheep(svg_w*Math.random(),svg_h*Math.random(),id_c++));
   }
   for( i=0; i<N_wolves; i++){
     zoo.push( new Wolf(svg_w*Math.random(),svg_h*Math.random(),id_c++));

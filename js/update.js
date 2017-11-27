@@ -5,6 +5,7 @@ function update()
       for(b = 0; b<zoo.length; b++){
 	  if(a == b)continue;
       zoo[a].think(zoo[b]);
+      zoo[a].set('status','ready'); //TODO
     }
   }
 

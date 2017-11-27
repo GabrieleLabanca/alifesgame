@@ -20,8 +20,14 @@ var Wolf = function(x,y){
     goal_point: undefined,
     think: function(other){
       var d = dist(this,other);
-      if(d < wolf_vis_range){ // checks if 'other' is in range
-        if(other.otype == 'Sheep' && other.color == 'white' ){ // case 'Sheep'
+      if(d < wolf_vis_range && (
+          ( this.get('energy') < 6 // hungry
+            && other.otype == 'Sheep' && other.color == 'white' ) // other is sheep
+          || ( this.get('energy') > 5 // ready for reproduction
+            && other.otype == 'Wolf') // other is wolf
+
+        )){
+        // set other as goal
           if(this.goal_distance == -1){
             this.goal_distance = svg_h;
           }
@@ -31,12 +37,11 @@ var Wolf = function(x,y){
             this.goal_point.set('x',other.get('x'));
             this.goal_point.set('y',other.get('y'));
           }
+
         }
-      }
     },
     move: function(){ //TODO implement it in Animal, but DIFFICULT
-      // TODO this.set('s',wolf_speed+this.handicap_s);
-      this.set('energy',this.get('energy') - 1);
+      this.set('energy',this.get('energy') - 1); // time passes...
       if(this.goal_distance == -1){
         A.randomWalk();
       }
@@ -62,7 +67,15 @@ var Wolf = function(x,y){
 
     },
     act: function(other){
-      if(other.otype == 'Sheep') {
+      if(other.otype == 'Wolf'
+          && other.get('status')=='ready'
+          && this.get('status')=='ready' ){
+        this.set('status','pregnant');
+        other.set('status','pregnant');
+        zoo.push( new Wolf(this.get('x'),this.get('y'),id_c++) );
+      }
+      else if(other.otype == 'Sheep' && other.color == white) {
+        this.set('status','eating');
         other.color = 'red'; 
         other.set('energy', 0);
         this.set('energy',this.get('energy')+5);
