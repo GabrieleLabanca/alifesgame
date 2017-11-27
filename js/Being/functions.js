@@ -1,4 +1,5 @@
-/* dist(first,second)
+/**
+ * dist(first,second)
  * returns the pythagorean distance from 'first' to 'second'
  * requires .get(char) method, where char is either 'x' or 'y'
  */
