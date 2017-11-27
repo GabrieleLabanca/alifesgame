@@ -1,16 +1,30 @@
+function setlists(){
+  ltsa = range(0, zoo.length);
+  ltsb = ltsa;
+  shuffle(ltsa);
+  shuffle(ltsb);
+}
+
 function update()
 {
+  var a = 0;
+  var b = 0;
+  setlists();
   // think: double loop
-  for(a = 0; a<zoo.length; a++){
-      for(b = 0; b<zoo.length; b++){
-	  if(a == b)continue;
-      zoo[a].think(zoo[b]);
-      zoo[a].set('status','ready');
-    }
-  }
+  for(i = 0; i < zoo.length; i++) {
+    a = ltsa[i];
+    for(j = 0; j < zoo.length; j++) {
+      b = ltsb[j];
+      if(a == b) continue;
+      zoo[a].think( zoo[b] );
+      zoo[a].set('status','ready'); //TODO
+    };
+  };
 
+  setlists();
   // move: single loop
-  for(a = 0; a<zoo.length; a++){
+  for(i = 0; i < zoo.length; i++){
+    a = ltsa[i];
     /*var A = zoo[a];
       var t = A.get('x');
       A.set('x',t+1);
@@ -32,10 +46,13 @@ function update()
     */
   }
 
+  setlists();
   // act: double loop with duplicate exclusion
-  for(a = 0; a<zoo.length; a++){
-    for(b = 0; b<a; b++){
-      if(dist(zoo[a],zoo[b]) < 2*circle_radius){
+  for(i = 0; i < zoo.length; i++){
+    a = ltsa[i];
+    for(j = 0; j < i; i++){
+      b = ltsb[j];
+      if(dist(zoo[a], zoo[b]) < 2 * circle_radius){
         zoo[a].act(zoo[b]);
       }
     }
